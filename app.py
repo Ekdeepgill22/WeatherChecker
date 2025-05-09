@@ -3,7 +3,7 @@ import requests
 
 app = Flask(__name__)
 
-API_KEY = "5f315e6583b9c250c7676ea21faa42b8"
+API_KEY = "Enter your API KEY"
 
 def get_background_class(condition):
     """Return a CSS class based on the weather condition."""
