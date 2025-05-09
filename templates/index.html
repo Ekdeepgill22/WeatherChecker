@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Weather App</title>
+</head>
+<body class="{{ background_class }}">
+    <div class="container">
+        <aside class="sidebar">
+            <h1 class="brand">
+                <i class="fas fa-cloud-sun"></i> Weather Pro
+            </h1>
+            <nav>
+                <ul>
+                    <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="#"><i class="fas fa-question-circle"></i> Help</a></li>
+                    <li><a href="#"><i class="fas fa-phone-alt"></i> Contact</a></li>
+                </ul>
+            </nav>
+            <footer>
+                <p>Powered by OpenWeatherMap</p>
+                <p>© 2025 WeatherPro</p>
+            </footer>
+        </aside>
+        <main class="content">
+            <h2>Check Your City Weather</h2>
+            <p>Enter the name of a city to get the latest weather details.</p>
+            <form action="/" method="POST">
+                <input type="text" name="city" placeholder="Enter city name" required>
+                <button type="submit">Get Weather</button>
+            </form>
+
+            <!-- Display Weather Data -->
+            {% if weather %}
+            <div class="weather-result">
+                <h3>Weather in {{ weather.city }}</h3>
+                <p><strong>Temperature:</strong> {{ weather.temperature }}</p>
+                <p><strong>Condition:</strong> {{ weather.condition }}</p>
+                <p><strong>Humidity:</strong> {{ weather.humidity }}</p>
+                <p><strong>Wind Speed:</strong> {{ weather.wind_speed }}</p>
+            </div>
+            {% elif error %}
+            <div class="error-message">
+                <p>{{ error }}</p>
+            </div>
+            {% endif %}
+        </main>
+    </div>
+</body>
+</html>
